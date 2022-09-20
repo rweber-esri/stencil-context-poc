@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+    <title>Stencil Component Starter</title>
+    <style>
+      div {
+        display: flex;
+        margin-bottom: 100px;
+      }
+      map-widget {
+        margin-left: 100px;
+      }
+    </style>
+    <script type="module" src="/build/stencil-context-demo.esm.js"></script>
+    <script nomodule src="/build/stencil-context-demo.js"></script>
+  </head>
+  <body>
+    <div>
+      <discussions-widget map-id="map-1"></discussions-widget>
+      <map-widget id="map-1"></map-widget>
+    </div>
+    <div>
+      <discussions-widget map-id="map-2"></discussions-widget>
+      <map-widget id="map-2"></map-widget>
+    </div>
+    <div>
+      <discussions-widget map-id="map-3"></discussions-widget>
+      <script>
+        const discussions3 = document.querySelector('[map-id=map-3]')
+        const map3 = document.createElement('map-widget');
+        map3.id = 'map-3';
+        setInterval(
+          () => {
+            if (map3.parentElement) {
+              map3.remove();
+            } else {
+              discussions3.parentElement.appendChild(map3);
+            }
+          },
+          2 * 1000
+        );
+      </script>
+    </div>
+  </body>
+</html>
